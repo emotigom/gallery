@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슈퍼베어의 모험 - 나만의 작품집</title>
+    <!-- Tailwind CSS 로드 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 구글 폰트: 귀여운 감성의 'Gamja Flower'와 깔끔한 'Nunito' -->
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                        cute: ['Gamja Flower', 'cursive'],
+                    },
+                    colors: {
+                        bear: {
+                            light: '#FFFDF6', // 크림색 배경
+                            warm: '#F7E7C4', // 부드러운 우드/베이지
+                            dark: '#8B5A2B', // 곰돌이 갈색
+                            accent: '#FF7F50', // 생기있는 오렌지
+                            pastelGreen: '#E2F0D9', // 파스텔 그린
+                            pastelBlue: '#D9EAD3'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFDF6;
+            font-family: 'Nunito', 'Gamja Flower', sans-serif;
+        }
+        /* 귀여운 통통 튀는 애니메이션 */
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .bounce-hover:hover {
+            animation: bounce-slow 1s infinite ease-in-out;
+        }
+        /* 방울 방울 흐르는 배경 효과 */
+        .bubble-bg {
+            background-image: radial-gradient(#F7E7C4 20%, transparent 20%), radial-gradient(#F7E7C4 20%, transparent 20%);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            opacity: 0.15;
+        }
+    </style>
+</head>
+<body class="text-bear-dark selection:bg-bear-warm selection:text-bear-dark relative overflow-x-hidden min-h-screen">
+
+    <!-- 패턴 배경 레이어 -->
+    <div class="absolute inset-0 bubble-bg pointer-events-none z-0"></div>
+
+    <!-- 네비게이션 헤더 -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b-4 border-bear-warm px-4 py-3 sm:px-8">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2 bounce-hover">
+                <span class="text-3xl">🐻</span>
+                <span class="font-cute text-2xl sm:text-3xl font-bold text-bear-dark tracking-wide">슈퍼베어의 방</span>
+            </a>
+            <nav class="flex space-x-2 sm:space-x-4">
+                <a href="#about" class="font-cute text-lg sm:text-xl px-3 py-1 rounded-full hover:bg-bear-warm transition duration-300">내소개</a>
+                <a href="#comic" class="font-cute text-lg sm:text-xl px-3 py-1 rounded-full hover:bg-bear-warm transition duration-300">만화보기</a>
+                <a href="#music" class="font-cute text-lg sm:text-xl px-3 py-1 rounded-full hover:bg-bear-warm transition duration-300">노래듣기</a>
+                <a href="#guestbook" class="font-cute text-lg sm:text-xl px-3 py-1 rounded-full hover:bg-bear-warm transition duration-300">방명록</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 메인 비주얼 히어로 영역 -->
+    <main class="relative z-10 max-w-6xl mx-auto px-4 py-8 sm:py-16">
+        <section class="text-center mb-16">
+            <div class="inline-block bg-white border-4 border-bear-dark p-6 sm:p-10 rounded-3xl shadow-[8px_8px_0px_0px_rgba(139,90,43,1)] max-w-2xl mx-auto relative overflow-hidden">
+                <div class="absolute top-2 right-2 text-3xl opacity-20">✨</div>
+                <div class="absolute bottom-2 left-2 text-3xl opacity-20">🎨</div>
+                
+                <span class="bg-bear-accent text-white font-cute text-lg sm:text-xl px-4 py-1.5 rounded-full uppercase tracking-widest font-bold shadow-md">Welcome!</span>
+                <h1 class="font-cute text-4xl sm:text-6xl font-black text-bear-dark mt-4 mb-2">슈퍼베어와 함께하는 세상!</h1>
+                <p class="font-cute text-xl sm:text-2xl text-bear-dark/80 mt-2">
+                    평범했던 아기곰이 마을을 지키기 위해 영웅으로 거듭나는 이야기를 구경해 볼래?
+                </p>
+                <div class="mt-6 flex flex-wrap justify-center gap-3">
+                    <a href="#comic" class="font-cute bg-bear-dark text-white hover:bg-bear-dark/90 text-lg sm:text-xl px-6 py-3 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,0.15)] transition duration-200 transform hover:-translate-y-0.5">
+                        📖 만화 첫 화 읽기
+                    </a>
+                    <a href="#music" class="font-cute bg-bear-accent text-white hover:bg-bear-accent/90 text-lg sm:text-xl px-6 py-3 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,0.15)] transition duration-200 transform hover:-translate-y-0.5">
+                        🎵 테마곡 듣기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 내 소개 섹션 -->
+        <section id="about" class="mb-16 scroll-mt-20">
+            <div class="text-center mb-8">
+                <h2 class="font-cute text-3xl sm:text-5xl font-bold inline-block border-b-8 border-bear-warm pb-2">🐻 작가 소개</h2>
+            </div>
+            
+            <div class="bg-white border-4 border-bear-dark rounded-3xl p-6 sm:p-8 shadow-lg max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
+                <!-- 아바타 플레이스홀더 (귀여운 SVG 일러스트) -->
+                <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-full border-4 border-bear-dark bg-bear-warm flex items-center justify-center text-6xl shadow-inner shrink-0 overflow-hidden relative bounce-hover">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-bear-warm to-yellow-100 opacity-50"></div>
+                    🐻✨
+                </div>
+                <!-- 소개 글 상자 -->
+                <div class="flex-1 text-center md:text-left">
+                    <h3 class="font-cute text-2xl sm:text-3xl font-bold mb-3">안녕하세요! 꿈꾸는 크리에이터 입니다</h3>
+                    <p class="text-base sm:text-lg leading-relaxed mb-4 text-bear-dark/95">
+                        저는 그림을 그리고, 작은 이야기를 상상하며, 어울리는 멜로디를 만드는 것을 정말 좋아해요!<br>
+                        이번에 만든 <strong>&lt;슈퍼베어의 모험&gt;</strong>은 위기를 이겨내고 스스로 용기를 내어 영웅이 되는 아기 곰돌이의 성장 스토리를 담았어요. 
+                        스토리뿐 아니라 어울리는 웅장하고 귀여운 소리도 코딩으로 직접 담았으니 재미있게 감상해 주세요!
+                    </p>
+                    <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+                        <span class="bg-bear-warm/60 font-cute text-sm sm:text-base px-3 py-1 rounded-full font-bold">🎯 취미: 캐릭터 드로잉</span>
+                        <span class="bg-bear-warm/60 font-cute text-sm sm:text-base px-3 py-1 rounded-full font-bold">🎹 특기: 8비트 사운드 디자인</span>
+                        <span class="bg-bear-warm/60 font-cute text-sm sm:text-base px-3 py-1 rounded-full font-bold">🧁 최애: 꿀 얹은 핫케이크</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 만화 보기 섹션 (1.png, 2.png, 3.png 사용) -->
+        <section id="comic" class="mb-16 scroll-mt-20">
+            <div class="text-center mb-8">
+                <h2 class="font-cute text-3xl sm:text-5xl font-bold inline-block border-b-8 border-bear-warm pb-2">📖 슈퍼베어의 탄생 만화</h2>
+                <p class="font-cute text-lg sm:text-xl text-bear-dark/70 mt-2">버튼을 눌러 한 페이지씩 흥미진진한 이야기를 넘겨보세요!</p>
+            </div>
+
+            <!-- 만화 뷰어 레이아웃 -->
+            <div class="bg-white border-4 border-bear-dark rounded-3xl p-4 sm:p-6 shadow-xl max-w-4xl mx-auto relative">
+                <!-- 뷰어 상단 바 -->
+                <div class="flex justify-between items-center mb-4 bg-bear-warm/30 rounded-2xl px-4 py-2">
+                    <span class="font-cute text-lg sm:text-xl font-bold text-bear-dark flex items-center">
+                        <span class="mr-2">📁</span> <span id="comic-title">1화: 평화로운 마을의 습격</span>
+                    </span>
+                    <span class="font-cute bg-bear-dark text-white px-3 py-0.5 rounded-full text-sm sm:text-base" id="page-indicator">
+                        1 / 3 Page
+                    </span>
+                </div>
+
+                <!-- 메인 만화 이미지 전시관 -->
+                <div class="relative overflow-hidden rounded-2xl border-2 border-bear-dark/50 bg-black/5 flex items-center justify-center min-h-[300px] sm:min-h-[500px]">
+                    <!-- 각 만화 페이지 이미지 (동적 관리) -->
+                    <img id="comic-image" src="3.png" alt="슈퍼베어의 모험" class="max-w-full max-h-[700px] object-contain transition-all duration-300 transform scale-100" onerror="this.onerror=null; this.src='https://placehold.co/800x600/f3e8ff/8b5a2b?text=Image+Load+Error';">
+
+                    <!-- 이미지 클릭 시 전체보기 유도 오버레이 -->
+                    <button onclick="openLightbox()" class="absolute bottom-3 right-3 bg-black/60 hover:bg-black/80 text-white rounded-full p-2.5 transition shadow-md" title="전체화면으로 크게 보기">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- 썸네일 탐색 내비게이터 -->
+                <div class="grid grid-cols-3 gap-3 mt-4">
+                    <button onclick="goToPage(0)" id="thumb-0" class="border-4 border-bear-accent rounded-xl overflow-hidden opacity-100 transition duration-200">
+                        <img src="3.png" alt="1화" class="h-16 w-full object-cover">
+                    </button>
+                    <button onclick="goToPage(1)" id="thumb-1" class="border-2 border-transparent rounded-xl overflow-hidden opacity-60 hover:opacity-100 transition duration-200">
+                        <img src="1.png" alt="2화" class="h-16 w-full object-cover">
+                    </button>
+                    <button onclick="goToPage(2)" id="thumb-2" class="border-2 border-transparent rounded-xl overflow-hidden opacity-60 hover:opacity-100 transition duration-200">
+                        <img src="2.png" alt="3화" class="h-16 w-full object-cover">
+                    </button>
+                </div>
+
+                <!-- 페이지 이동 좌우 컨트롤러 -->
+                <div class="flex justify-between items-center mt-6 gap-4">
+                    <button id="prev-btn" onclick="prevPage()" class="font-cute bg-bear-warm hover:bg-bear-warm/80 disabled:opacity-40 disabled:cursor-not-allowed border-2 border-bear-dark text-bear-dark font-bold text-lg sm:text-xl py-2 px-6 rounded-2xl flex-1 flex items-center justify-center gap-2 transition duration-200" disabled>
+                        <span>◀</span> 이전 페이지
+                    </button>
+                    <button id="next-btn" onclick="nextPage()" class="font-cute bg-bear-accent hover:bg-bear-accent/90 text-white border-2 border-bear-dark font-bold text-lg sm:text-xl py-2 px-6 rounded-2xl flex-1 flex items-center justify-center gap-2 transition duration-200">
+                        다음 페이지 <span>▶</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 음악 듣기 섹션 (Web Audio API 활용 테마 뮤직 박스) -->
+        <section id="music" class="mb-16 scroll-mt-20">
+            <div class="text-center mb-8">
+                <h2 class="font-cute text-3xl sm:text-5xl font-bold inline-block border-b-8 border-bear-warm pb-2">🎵 슈퍼베어 테마 사운드</h2>
+                <p class="font-cute text-lg sm:text-xl text-bear-dark/70 mt-2">코딩으로 직접 만든 통통 튀는 8비트 사운드를 감상해 봐요!</p>
+            </div>
+
+            <div class="bg-white border-4 border-bear-dark rounded-3xl p-6 sm:p-8 shadow-xl max-w-xl mx-auto text-center relative overflow-hidden">
+                <!-- 귀여운 오디오 비주얼라이저 데코 -->
+                <div class="flex justify-center items-end h-20 gap-1.5 mb-6 bg-bear-warm/20 rounded-2xl p-4 overflow-hidden" id="visualizer">
+                    <!-- 비주얼라이저 바 10개 -->
+                    <div class="w-3 bg-bear-accent rounded-full transition-all duration-150 h-3"></div>
+                    <div class="w-3 bg-bear-dark rounded-full transition-all duration-150 h-6"></div>
+                    <div class="w-3 bg-bear-accent rounded-full transition-all duration-150 h-4"></div>
+                    <div class="w-3 bg-bear-dark rounded-full transition-all duration-150 h-8"></div>
+                    <div class="w-3 bg-bear-accent rounded-full transition-all duration-150 h-2"></div>
+                    <div class="w-3 bg-bear-dark rounded-full transition-all duration-150 h-5"></div>
+                    <div class="w-3 bg-bear-accent rounded-full transition-all duration-150 h-7"></div>
+                    <div class="w-3 bg-bear-dark rounded-full transition-all duration-150 h-3"></div>
+                    <div class="w-3 bg-bear-accent rounded-full transition-all duration-150 h-6"></div>
+                    <div class="w-3 bg-bear-dark rounded-full transition-all duration-150 h-4"></div>
+                </div>
+
+                <!-- 노래 기본 정보 -->
+                <h3 class="font-cute text-2xl sm:text-3xl font-bold mb-1">🐻 숲속의 작은 영웅 (8-Bit Theme)</h3>
+                <p class="font-cute text-base sm:text-lg text-bear-dark/70 mb-6">스토리의 귀엽고 쾌활한 모험을 담은 발랄한 신디사이저 멜로디</p>
+
+                <!-- 음악 플레이 보드 컨트롤러 -->
+                <div class="flex flex-col items-center gap-4">
+                    <!-- 재생/정지 큰 동그라미 버튼 -->
+                    <button id="play-music-btn" onclick="togglePlayMusic()" class="w-20 h-20 rounded-full bg-bear-accent hover:bg-bear-accent/90 text-white border-4 border-bear-dark flex items-center justify-center text-4xl shadow-md transition duration-200 transform hover:scale-105">
+                        <span id="play-icon">▶</span>
+                    </button>
+                    <span id="player-status-text" class="font-cute text-lg font-bold text-bear-accent animate-pulse hidden">지금 테마송 연주 중... 🎵</span>
+                    <span id="player-status-idle" class="font-cute text-lg font-bold text-bear-dark/60">재생 버튼을 누르면 신디사이저 연주가 시작됩니다!</span>
+                </div>
+
+                <!-- 사운드 컨트롤 팁 -->
+                <div class="mt-6 border-t-2 border-bear-warm/60 pt-4 text-xs sm:text-sm text-bear-dark/50 leading-relaxed">
+                    💡 <strong>음악 팁:</strong> 브라우저 오디오 시스템으로 직접 실시간 합성해 내는 소리입니다.<br>
+                    안심하시고 볼륨을 켜서 통통 튀는 아날로그 음색을 즐겨보세요!
+                </div>
+            </div>
+        </section>
+
+        <!-- 방문자 격려 방명록 -->
+        <section id="guestbook" class="mb-16 scroll-mt-20">
+            <div class="text-center mb-8">
+                <h2 class="font-cute text-3xl sm:text-5xl font-bold inline-block border-b-8 border-bear-warm pb-2">✏️ 응원 한 줄 방명록</h2>
+                <p class="font-cute text-lg sm:text-xl text-bear-dark/70 mt-2">포트폴리오가 멋졌다면 슈퍼베어에게 힘이 나는 응원을 남겨주세요!</p>
+            </div>
+
+            <div class="bg-white border-4 border-bear-dark rounded-3xl p-6 sm:p-8 shadow-xl max-w-2xl mx-auto">
+                <form id="comment-form" onsubmit="addComment(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block font-cute text-lg font-bold mb-1">닉네임</label>
+                            <input type="text" id="comment-name" required placeholder="예: 아기토끼" class="w-full border-2 border-bear-dark rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-bear-accent bg-bear-light font-cute text-lg">
+                        </div>
+                        <div>
+                            <label class="block font-cute text-lg font-bold mb-1">감상 소감</label>
+                            <select id="comment-emoji" class="w-full border-2 border-bear-dark rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-bear-accent bg-bear-light font-cute text-lg">
+                                <option value="⭐️">👍 완전 최고에요!</option>
+                                <option value="🐻">🐻 슈퍼베어 귀여워요</option>
+                                <option value="💖">💖 너무 감동적인 이야기에요</option>
+                                <option value="🎵">🎵 멜로디가 너무 신나요</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block font-cute text-lg font-bold mb-1">내용</label>
+                        <textarea id="comment-text" required rows="3" placeholder="여기에 멋진 코멘트를 적어보세요!" class="w-full border-2 border-bear-dark rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-bear-accent bg-bear-light font-cute text-lg"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-bear-dark hover:bg-bear-dark/95 text-white font-cute text-xl font-bold py-3 px-6 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,0.15)] transition duration-200">
+                        💌 방명록 남기기
+                    </button>
+                </form>
+
+                <!-- 등록된 코멘트 리스트 -->
+                <div class="mt-8 border-t-4 border-bear-warm/60 pt-6">
+                    <h3 class="font-cute text-xl sm:text-2xl font-bold mb-4">📜 친구들이 남겨준 글</h3>
+                    <div id="comment-list" class="space-y-4 max-h-[300px] overflow-y-auto pr-2">
+                        <!-- 기본 코멘트 -->
+                        <div class="bg-bear-warm/20 border-2 border-bear-dark/30 p-4 rounded-2xl">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-bold font-cute text-lg">🐻 디자이너 샘</span>
+                                <span class="text-sm text-bear-dark/60">방금 전</span>
+                            </div>
+                            <p class="font-cute text-lg">만화 내용이 정말 알차네요! 힘을 얻고 각성한 슈퍼베어의 3화가 아주 가슴을 웅장하게 만들어요.</p>
+                        </div>
+                        <div class="bg-bear-warm/20 border-2 border-bear-dark/30 p-4 rounded-2xl">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-bold font-cute text-lg">🦊 친구랑라라</span>
+                                <span class="text-sm text-bear-dark/60">10분 전</span>
+                            </div>
+                            <p class="font-cute text-lg">멜로디 소리 너무 신나서 자꾸 클릭하게 돼요! 8비트 사운드 최고 👍</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 만화 크게 보기 모달 라이트박스 -->
+    <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 hidden flex flex-col justify-center items-center p-4">
+        <!-- 닫기 버튼 -->
+        <button onclick="closeLightbox()" class="absolute top-4 right-4 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition" title="닫기 (ESC)">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <!-- 큰 이미지 -->
+        <img id="lightbox-image" src="3.png" alt="슈퍼베어 크게보기" class="max-w-full max-h-[85vh] object-contain rounded-lg">
+        <!-- 페이지 번호 -->
+        <div class="text-white font-cute text-2xl mt-4" id="lightbox-page-indicator">1 / 3 Page</div>
+    </div>
+
+    <footer class="bg-bear-dark text-bear-warm border-t-8 border-bear-warm py-8 px-4 text-center mt-12 relative z-10">
+        <div class="max-w-6xl mx-auto space-y-4">
+            <div class="text-3xl">🐾</div>
+            <p class="font-cute text-xl sm:text-2xl font-bold">"여러분의 용기가 곧 우리의 힘입니다. - 슈퍼베어"</p>
+            <p class="text-sm opacity-80">&copy; 2026 슈퍼베어 어드벤처 스튜디오. All rights reserved.</p>
+            <p class="text-xs opacity-60">본 사이트의 일러스트 및 스토리는 직접 창작한 오리지널 자산입니다.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- 만화 뷰어 상태 및 논리 코드 ---
+        // 1.png = Page 2, 2.png = Page 3, 3.png = Page 1 이므로 논리 순서에 따라 배열 매핑
+        const comicPages = [
+            { src: '3.png', title: '1화: 평화로운 마을의 습격' },
+            { src: '1.png', title: '2화: 힘겨운 훈련과 운명의 부름' },
+            { src: '2.png', title: '3화: 슈퍼베어의 탄생과 승리' }
+        ];
+
+        let currentPage = 0;
+
+        function updateComicUI() {
+            const imgEl = document.getElementById('comic-image');
+            const titleEl = document.getElementById('comic-title');
+            const pageEl = document.getElementById('page-indicator');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            // 이미지 소스 페이드아웃 후 전환
+            imgEl.style.opacity = '0';
+            setTimeout(() => {
+                imgEl.src = comicPages[currentPage].src;
+                titleEl.textContent = comicPages[currentPage].title;
+                pageEl.textContent = `${currentPage + 1} / ${comicPages.length} Page`;
+                imgEl.style.opacity = '1';
+            }, 150);
+
+            // 썸네일 테두리 하이라이팅 변경
+            for (let i = 0; i < comicPages.length; i++) {
+                const thumb = document.getElementById(`thumb-${i}`);
+                if (i === currentPage) {
+                    thumb.classList.add('border-bear-accent', 'opacity-100');
+                    thumb.classList.remove('border-transparent', 'opacity-60');
+                } else {
+                    thumb.classList.remove('border-bear-accent', 'opacity-100');
+                    thumb.classList.add('border-transparent', 'opacity-60');
+                }
+            }
+
+            // 버튼 제어 상태 변경
+            prevBtn.disabled = currentPage === 0;
+            nextBtn.disabled = currentPage === comicPages.length - 1;
+        }
+
+        function nextPage() {
+            if (currentPage < comicPages.length - 1) {
+                currentPage++;
+                updateComicUI();
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                updateComicUI();
+            }
+        }
+
+        function goToPage(index) {
+            if (index >= 0 && index < comicPages.length) {
+                currentPage = index;
+                updateComicUI();
+            }
+        }
+
+        // --- 라이트박스 뷰어 오픈/클로즈 ---
+        function openLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-image');
+            const lightboxPage = document.getElementById('lightbox-page-indicator');
+
+            lightboxImg.src = comicPages[currentPage].src;
+            lightboxPage.textContent = `${currentPage + 1} / ${comicPages.length} Page`;
+            lightbox.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+        }
+
+        // ESC 눌렀을 때 라이트박스 닫기 기능 지원
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+
+        // --- 방명록 실시간 피드 등록 기능 ---
+        function addComment(event) {
+            event.preventDefault();
+            const nameEl = document.getElementById('comment-name');
+            const emojiEl = document.getElementById('comment-emoji');
+            const textEl = document.getElementById('comment-text');
+
+            const name = nameEl.value.trim();
+            const emoji = emojiEl.value;
+            const text = textEl.value.trim();
+
+            if (!name || !text) return;
+
+            // 새 방명록 마크업 카드 추가
+            const commentList = document.getElementById('comment-list');
+            const newComment = document.createElement('div');
+            newComment.className = 'bg-bear-accent/10 border-2 border-bear-accent p-4 rounded-2xl transform transition duration-300 scale-95 opacity-0';
+            
+            newComment.innerHTML = `
+                <div class="flex justify-between items-center mb-1">
+                    <span class="font-bold font-cute text-lg flex items-center gap-1">
+                        <span>${emoji}</span> ${escapeHTML(name)}
+                    </span>
+                    <span class="text-sm text-bear-dark/60">방금 전</span>
+                </div>
+                <p class="font-cute text-lg">${escapeHTML(text)}</p>
+            `;
+
+            // 방명록 리스트 상단에 삽입
+            commentList.insertBefore(newComment, commentList.firstChild);
+
+            // 애니메이션 연출 효과
+            setTimeout(() => {
+                newComment.classList.remove('scale-95', 'opacity-0');
+                newComment.classList.add('scale-100', 'opacity-100');
+            }, 50);
+
+            // 입력 상자 초기화
+            nameEl.value = '';
+            textEl.value = '';
+
+            // 방명록 성공 안내 알림 박스로 대체
+            const statusText = document.getElementById('player-status-idle');
+        }
+
+        // HTML 이스케이프 함수 (보안 강화)
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+
+
+        // --- Web Audio API 기반 8비트 레트로 신디사이저 연주 코드 ---
+        let audioCtx = null;
+        let playInterval = null;
+        let isMusicPlaying = false;
+        let noteIndex = 0;
+
+        // 경쾌한 모험 테마송 (C 메이저 키 기반 귀여운 멜로디)
+        const melody = [
+            { note: 261.63, dur: 0.2 }, // C4
+            { note: 329.63, dur: 0.2 }, // E4
+            { note: 392.00, dur: 0.2 }, // G4
+            { note: 523.25, dur: 0.4 }, // C5
+            { note: 440.00, dur: 0.2 }, // A4
+            { note: 349.23, dur: 0.2 }, // F4
+            { note: 392.00, dur: 0.2 }, // G4
+            { note: 523.25, dur: 0.4 }, // C5
+            { note: 493.88, dur: 0.2 }, // B4
+            { note: 392.00, dur: 0.2 }, // G4
+            { note: 440.00, dur: 0.2 }, // A4
+            { note: 329.63, dur: 0.4 }, // E4
+            { note: 293.66, dur: 0.2 }, // D4
+            { note: 349.23, dur: 0.2 }, // F4
+            { note: 329.63, dur: 0.2 }, // E4
+            { note: 261.63, dur: 0.6 }  // C4
+        ];
+
+        // 오디오 비주얼라이저 막대들 호출 및 애니메이션화
+        const visualBars = document.querySelectorAll('#visualizer div');
+        let visualInterval = null;
+
+        function animateVisualizer() {
+            if (isMusicPlaying) {
+                visualBars.forEach(bar => {
+                    const randomHeight = Math.floor(Math.random() * 60) + 12; // 12px ~ 72px 사이 랜덤
+                    bar.style.height = `${randomHeight}px`;
+                });
+            } else {
+                visualBars.forEach(bar => {
+                    bar.style.height = `16px`; // 원래대로 휴식
+                });
+            }
+        }
+
+        function playTone(freq, duration) {
+            if (!audioCtx) return;
+
+            // 소리가 너무 길어 겹칠 때를 대비해 이전 톤 정리하는 구조 구축
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            // 레트로 8비트 감성을 자아내는 삼각파(Triangle) 혹은 펄스파 느낌 적용
+            osc.type = 'triangle'; 
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+            // 볼륨 감쇄 (소리가 자연스럽게 페이드아웃 되게 설계)
+            gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration - 0.05);
+
+            osc.start();
+            osc.stop(audioCtx.currentTime + duration);
+        }
+
+        function startMusicEngine() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            noteIndex = 0;
+            // 멜로디 루프 생성기
+            playInterval = setInterval(() => {
+                const currentNote = melody[noteIndex];
+                playTone(currentNote.note, currentNote.dur);
+                
+                noteIndex = (noteIndex + 1) % melody.length;
+            }, 300); // 박자 간격 밀리초
+
+            // 비주얼라이저 애니메이션 루프 가동
+            visualInterval = setInterval(animateVisualizer, 150);
+        }
+
+        function stopMusicEngine() {
+            if (playInterval) {
+                clearInterval(playInterval);
+                playInterval = null;
+            }
+            if (visualInterval) {
+                clearInterval(visualInterval);
+                visualInterval = null;
+                animateVisualizer(); // 휴식 상태 높이로 즉각 정지
+            }
+        }
+
+        function togglePlayMusic() {
+            const playBtn = document.getElementById('play-music-btn');
+            const playIcon = document.getElementById('play-icon');
+            const activeText = document.getElementById('player-status-text');
+            const idleText = document.getElementById('player-status-idle');
+
+            if (!isMusicPlaying) {
+                // 음악 재생 시작
+                isMusicPlaying = true;
+                startMusicEngine();
+                
+                playIcon.textContent = '■';
+                playBtn.classList.remove('bg-bear-accent');
+                playBtn.classList.add('bg-bear-dark');
+                activeText.classList.remove('hidden');
+                idleText.classList.add('hidden');
+            } else {
+                // 음악 재생 정지
+                isMusicPlaying = false;
+                stopMusicEngine();
+
+                playIcon.textContent = '▶';
+                playBtn.classList.remove('bg-bear-dark');
+                playBtn.classList.add('bg-bear-accent');
+                activeText.classList.add('hidden');
+                idleText.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

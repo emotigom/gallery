@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 개인 작품 갤러리</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <h1>AI 개인 작품 갤러리</h1>
+            <p class="subtitle">AI를 활용해 창작한 다채로운 음악, 그림책, 만화 작품들을 소개합니다.</p>
+            <nav>
+                <a href="#gallery">작품 둘러보기</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="gallery">
+        <div class="gallery-container">
+            
+            <div class="card">
+                <div class="card-content">
+                    <span class="tag">Audio</span>
+                    <h2 class="card-title">AI 음악 작품 01</h2>
+                    <p class="card-description">특정 시드와 설정을 기반으로 생성된 첫 번째 AI 음악 작품입니다. 부드러운 피아노 선율이 특징입니다.</p>
+                    <div class="meta-info">
+                        <p><strong>사용한 도구:</strong> Music 생성 AI (Seed: 1937905056)</p>
+                        <p><strong>기억에 남은 점:</strong> 무작위 시드 속에서 규칙적이고 아름다운 멜로디가 정교하게 구현되는 과정이 흥미로웠습니다.</p>
+                    </div>
+                    <div class="media-container">
+                        <audio controls src="./assets/1반_music01_20260704_122739_seed1937905056.wav"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card comic-card">
+                <div class="card-content">
+                    <span class="tag">Comic Strip</span>
+                    <h2 class="card-title">슈퍼 베어 탄생기</h2>
+                    <p class="card-description">위기에 빠진 마을을 구하기 위해 혹독한 수련을 거쳐 영웅 '슈퍼 베어'로 거듭나는 곰돌이의 성장 만화입니다.</p>
+                    <div class="meta-info">
+                        <p><strong>사용한 도구:</strong> 이미지 생성 AI (웹툰·만화 스타일 레이아웃)</p>
+                        <p><strong>기억에 남은 점:</strong> 캐릭터의 감정 변화(슬픔, 결의, 수련, 각성)에 맞춰 불꽃 효과나 배경 효과를 AI로 일관되게 연출하는 실험을 진행했습니다.</p>
+                    </div>
+                    <div class="media-container comic-viewer">
+                        <div class="slide-container">
+                            <img src="./assets/1.png" alt="만화 1화: 마을의 위기와 결의" class="comic-slide active">
+                            <img src="./assets/2.png" alt="만화 2화: 혹독한 수련과 별의 부름" class="comic-slide">
+                            <img src="./assets/3.png" alt="만화 3화: 슈퍼 베어 탄생과 평화" class="comic-slide">
+                            
+                            <button class="prev" onclick="moveComicSlide(-1)">&#10094;</button>
+                            <button class="next" onclick="moveComicSlide(1)">&#10095;</button>
+                        </div>
+                        <p class="comic-caption">1화: 오늘도 평화로운 하루를 보내던 곰돌이, 갑작스러운 번개와 함께 파괴된 마을을 보며 강해지기로 결심합니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <span class="tag">MIDI Data</span>
+                    <h2 class="card-title">Song Maker MIDI</h2>
+                    <p class="card-description">송 메이커(Song Maker) 형식을 활용해 디지털 음표와 비트 데이터를 정밀하게 구성한 미디(MIDI) 파일입니다.</p>
+                    <div class="meta-info">
+                        <p><strong>사용한 도구:</strong> MIDI 시퀀서 / Song Maker</p>
+                        <p><strong>기억에 남은 점:</strong> 디지털 신호 형태의 데이터가 모여 하나의 논리적인 악보 구조를 이뤄내는 흐름을 배웠습니다.</p>
+                    </div>
+                    <div class="media-container">
+                        <a href="./assets/song-maker.mid" download class="download-btn">MIDI 파일 다운로드 받기</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card book-card">
+                <div class="card-content">
+                    <span class="tag">Picture Book</span>
+                    <h2 class="card-title">곰돌이 포포의 여정</h2>
+                    <p class="card-description">숲속에 사는 곰돌이 포포가 새로운 세상을 탐험하며 오리 친구 루루를 만나고 친해지는 이야기를 담은 힐링 그림책입니다.</p>
+                    <div class="meta-info">
+                        <p><strong>사용한 도구:</strong> 이미지 생성 AI (동화 삽화 스타일)</p>
+                        <p><strong>기억에 남은 점:</strong> 부드러운 수채화풍 배경 속에서 캐릭터들이 자연스럽게 어우러지도록 묘사하는 데 중점을 두었습니다.</p>
+                    </div>
+                    <div class="media-container book-viewer">
+                        <div class="single-image-container">
+                            <img src="./assets/1.png" alt="그림책 대표 이미지" class="book-cover-img">
+                        </div>
+                        <p class="book-summary-text">평화로운 숲을 떠나 푸른 호수에서 루루를 만나 친구가 되는 포포의 따뜻한 여정을 담고 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <span class="tag">Audio</span>
+                    <h2 class="card-title">AI 음악 작품 02</h2>
+                    <p class="card-description">역동적인 리듬과 신시사이저 사운드, 비트가 어우러진 현대적인 감각의 두 번째 AI 생성 음악 작품입니다.</p>
+                    <div class="meta-info">
+                        <p><strong>사용한 도구:</strong> Music 생성 AI (Seed: 2)</p>
+                        <p><strong>기억에 남은 점:</strong> 시드 값에 따라 분위기와 악기 구성이 확연하게 달라지는 것을 경험하며 AI 음악의 확장성을 느꼈습니다.</p>
+                    </div>
+                    <div class="media-container">
+                        <audio controls src="./assets/1반_music_20260704_122635_seed2.wav"></audio>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 AI 개인 작품 갤러리. All 라이츠 리저브드.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
